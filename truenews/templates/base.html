@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новостной сайт</title>
+    <link rel="stylesheet" href='{% static "news/css/style.css"%}'>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo-link" ><h1>TrueNews</h1></a>
+            <div class="currency">
+                <span>USD: <span id="usd">...</span></span>
+                <span>EUR: <span id="eur">...</span></span>
+                <span>CNY: <span id="cny">...</span></span>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                {% for cat in categories %}
+                <li><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+{% block content %} {% endblock %}
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+                <a href="https://vk.com" target="_blank">ВКонтакте</a>
+                <a href="https://telegram.org" target="_blank">Telegram</a>
+            </div>
+            <p>&copy; 2025 TrueNews. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Пример получения курса валют (заглушка)
+        document.getElementById('usd').textContent = '75.50';
+        document.getElementById('eur').textContent = '85.30';
+        document.getElementById('cny').textContent = '11.20';
+    </script>
+</body>
+</html>

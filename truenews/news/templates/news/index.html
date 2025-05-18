@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="posts-grid">
+    {% for p in posts %}
+    <div class="post-card">
+        <h2>{{ p.title }}</h2>
+        {% autoescape off %}
+        <p>{{ p.content|linebreaks|truncatewords:7 }}</p>
+        {% endautoescape %}
+        <a href="{{ p.get_absolute_url }}">Читать далее</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+
+
